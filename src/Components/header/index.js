@@ -2,6 +2,7 @@ import { ReactComponent as SearchLogo } from "../../assets/img/search-logo.svg";
 import pageLogo from "../../assets/img/logo.png";
 import "./header.css";
 import "../Shared/Bootstrap/bootstrap-tcl.css";
+import "../Shared/Main/main.css";
 
 function Header() {
   return (

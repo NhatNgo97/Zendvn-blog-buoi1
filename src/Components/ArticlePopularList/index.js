@@ -1,18 +1,14 @@
 import "./ArticlePopularList.css";
 import "../Shared/Bootstrap/bootstrap-tcl.css";
 import Article from "../Article";
+import "../Shared/Main/main.css";
+import MainTitle from "../Shared/MainTitle/MainTitle";
 
 function ArticlePopularList() {
   return (
     <div className="popular-news section bg-white-blue">
       <div className="tcl-container">
-        <div className="main-title spacing d-flex tcl-jc-between tcl-ais-center">
-          <h2>Popular Articles</h2>
-          <a href="#" className="btn btn-default">
-            View More
-          </a>
-        </div>
-
+        <MainTitle text="Popular Articles" />
         <div className="popular-news__list spacing">
           <div className="popular-news__list--left">
             <div className="popular-news__list--row">

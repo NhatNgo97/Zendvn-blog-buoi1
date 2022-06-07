@@ -2,17 +2,14 @@ import Article from "../Article";
 import "./ArticleList.css";
 import "../Shared/Bootstrap/bootstrap-tcl.css";
 import PrimaryButton from "../Shared/Button/PrimaryButton";
+import "../Shared/Main/main.css";
+import MainTitle from "../Shared/MainTitle/MainTitle";
 
 function ArticleList() {
   return (
     <div className="articles-list section">
       <div className="tcl-container">
-        <div className="main-title spacing d-flex tcl-jc-between tcl-ais-center">
-          <h2>News List</h2>
-          <a href="#" className="btn btn-default">
-            View More
-          </a>
-        </div>
+        <MainTitle text="News List" />
 
         <div className="tcl-row">
           <div className="tcl-col-12 tcl-col-md-6">

@@ -1,6 +1,7 @@
 import appLogo from "../../assets/img/logo.png";
 import "./footer.css";
 import "../Shared/Bootstrap/bootstrap-tcl.css";
+import "../Shared/Main/main.css";
 
 function Footer() {
   return (
