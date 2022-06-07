@@ -86,7 +86,7 @@ function Header() {
               </ul>
               <ul className="header-nav__lists">
                 <li className="user">
-                  <a href="login.html">
+                  <a href="login">
                     <i className="icons ion-person"></i> Tài khoản
                   </a>
                 </li>
