@@ -1,4 +1,4 @@
-import PostDetail from "../../Components/PostDetail";
+import PostDetail from "../../components/PostDetail";
 
 function DetailPage() {
   return (

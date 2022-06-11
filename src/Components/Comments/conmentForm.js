@@ -5,7 +5,7 @@ function CommentForm() {
     <div className="comments__form">
       <div className="comments__form--control">
         <div className="comments__section--avatar">
-          <a href="#">
+          <a href="/">
             <img src={avatar1} alt="" />
           </a>
         </div>

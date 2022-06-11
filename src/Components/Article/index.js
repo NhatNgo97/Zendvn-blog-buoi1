@@ -10,7 +10,7 @@ function Article({ listType, isStyleRow }) {
     return (
       <article className="article-item">
         <div className="article-item__thumbnail">
-          <a href="#">
+          <a href="/">
             <img src={articleImg} alt="assets/images/blog-1.jpg" />
           </a>
         </div>
@@ -22,13 +22,13 @@ function Article({ listType, isStyleRow }) {
           </h2>
           <div className="article-item__info">
             <div className="article-item__author-image">
-              <a aria-label="John Doe" href="#">
+              <a aria-label="John Doe" href="/">
                 <img src={johnDoeImg} alt="john-doe" />
               </a>
             </div>
             <div className="article-item__info-right">
               <div className="article-item__author-name">
-                <a href="#">
+                <a href="/">
                   <strong>John Doe</strong>
                 </a>
               </div>
@@ -88,13 +88,13 @@ function Article({ listType, isStyleRow }) {
           </p>
           <div className="article-item__info">
             <div className="article-item__author-image">
-              <a aria-label="John Doe" href="#">
+              <a aria-label="John Doe" href="/">
                 <img src={johnDoeImg} alt="john-doe" />
               </a>
             </div>
             <div className="article-item__info-right">
               <div className="article-item__author-name">
-                <a href="#">
+                <a href="/">
                   <strong>John Doe</strong>
                 </a>
               </div>
@@ -114,7 +114,7 @@ function Article({ listType, isStyleRow }) {
     return (
       <article className="article-item style-card">
         <div className="article-item__thumbnail">
-          <a href="#">
+          <a href="/">
             <img src={articleImg} alt="assets/images/blog-1.jpg" />
           </a>
         </div>
@@ -127,7 +127,7 @@ function Article({ listType, isStyleRow }) {
           <div className="article-item__info">
             <div className="article-item__info-right">
               <div className="article-item__author-name">
-                <a href="#">
+                <a href="/">
                   <strong>John Doe</strong>
                 </a>
               </div>
@@ -147,30 +147,30 @@ function Article({ listType, isStyleRow }) {
     return (
       <article className="article-item style-card">
         <div className="article-item__thumbnail">
-          <a href="#">
+          <a href="/">
             <img src={articleImg} alt="assets/images/blog-1.jpg" />
           </a>
         </div>
         <div className="article-item__content">
           <ul className="article-item__categories">
             <li>
-              <a href="#" className="btn btn-category">
+              <a href="/" className="btn btn-category">
                 News
               </a>
             </li>
             <li>
-              <a href="#" className="btn btn-category">
+              <a href="/" className="btn btn-category">
                 News
               </a>
             </li>
           </ul>
           <h2 className="article-item__title">
-            <a href="#">Only Someone Who's Seen The Mummy Will Pass This</a>
+            <a href="/">Only Someone Who's Seen The Mummy Will Pass This</a>
           </h2>
           <div className="article-item__info">
             <div className="article-item__info-right">
               <div className="article-item__author-name">
-                <a href="#">
+                <a href="/">
                   <strong>John Doe</strong>
                 </a>
               </div>
