@@ -2,12 +2,13 @@ import { ReactComponent as RotatingIcon } from "../../../assets/img/rotatingIcon
 import "./button.css";
 import { useState } from "react";
 
-function Button({ type, text, size, href, haveLoadingIcon }) {
+function Button({ type, text, size, href, haveLoadingIcon, callback }) {
   const [isLoading, setIsLoading] = useState(false);
   const classString = "btn btn-" + type + " btn-size-" + size;
 
   function handleClick() {
     setIsLoading(true);
+    callback();
   }
 
   if (type !== undefined) {

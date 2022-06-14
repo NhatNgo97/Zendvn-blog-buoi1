@@ -1,188 +1,93 @@
 import { ReactComponent as ClockLogo } from "../../assets/img/clock-logo.svg";
-import articleImg from "../../assets/img/blog-1.jpg";
-import johnDoeImg from "../../assets/img/john-doe.png";
 import "../Shared/Bootstrap/bootstrap-tcl.css";
 import "./article.css";
 import "../Shared/Main/main.css";
 import Button from "../Shared/Button/Button";
 
-function Article({ listType, isStyleRow }) {
-  if (listType === "latest") {
-    return (
-      <article className="article-item">
-        <div className="article-item__thumbnail">
-          <a href="/">
-            <img src={articleImg} alt="assets/images/blog-1.jpg" />
-          </a>
-        </div>
-        <div className="article-item__content">
-          <h2 className="article-item__title">
-            <a href="/only-someone-who's-seen-the-mummy-will-pass-this/">
-              Only Someone Who's Seen The Mummy Will Pass This
-            </a>
-          </h2>
-          <div className="article-item__info">
-            <div className="article-item__author-image">
-              <a aria-label="John Doe" href="/">
-                <img src={johnDoeImg} alt="john-doe" />
-              </a>
-            </div>
-            <div className="article-item__info-right">
-              <div className="article-item__author-name">
-                <a href="/">
-                  <strong>John Doe</strong>
-                </a>
-              </div>
-              <div className="article-item__datetime">
-                <div className="date">June 02, 2020</div>
-                <div className="time">
-                  <ClockLogo />1 min
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </article>
-    );
+/**
+ *
+ * @listType {string} paramasd
+ * @returns
+ */
+function Article({
+  listType,
+  isStyleRow,
+  isStyleCard,
+  isDescriptionIncluded,
+  isCategoryIncluded,
+  isStatsIncluded,
+  isAuthorAvatarIncluded,
+  isAuthorNameIncluded,
+  article,
+  style,
+}) {
+  var articleClassName = "article-item";
+  if (isStyleCard === true) {
+    articleClassName = articleClassName + " style-card";
   }
-  if (listType === "popular") {
-    return (
-      <article
-        className={
-          isStyleRow === true
-            ? "article-item style-card style-row"
-            : "article-item style-card"
-        }
-      >
-        <div className="article-item__thumbnail">
-          <a href="/post-detail">
-            <img src={articleImg} alt="assets/images/blog-1.jpg" />
-          </a>
-        </div>
-        <div className="article-item__content">
+  if (isStyleRow === true) {
+    articleClassName = articleClassName + " style-row";
+  }
+
+  return (
+    <article style={style} className={articleClassName}>
+      <div className="article-item__thumbnail">
+        <a href="/">
+          <img src={article.thumbnail} alt="assets/images/blog-1.jpg" />
+        </a>
+      </div>
+      <div className="article-item__content">
+        {isCategoryIncluded && (
           <ul className="article-item__categories">
-            <li>
-              <Button type="category" text="News" />
-            </li>
-            <li>
-              <Button type="category" text="News" />
-            </li>
+            {article.categories.map((a) => (
+              <li key={Math.random(0, 1)}>
+                <Button type="category" text={a} />
+              </li> /// key should be a.id
+            ))}
           </ul>
+        )}
+        {isStatsIncluded && (
           <ul className="article-item__stats">
             <li>
               <i className="icons ion-ios-eye"></i>
-              <span className="text">Views</span>
+              <span className="text">{article.views + " views"}</span>
             </li>
           </ul>
-          <h2 className="article-item__title">
-            <a href="/post-detail">
-              Only Someone Who's Seen The Mummy Will Pass This
-            </a>
-          </h2>
-          <p className="article-item__desc">
-            Markdown is a lightweight markup language with plain-text-formatting
-            syntax. Its design allows it to…
-          </p>
-          <div className="article-item__info">
+        )}
+        <h2 className="article-item__title">
+          <a href="/">{article.title}</a>
+        </h2>
+        {isDescriptionIncluded && (
+          <p className="article-item__desc">{article.description}</p>
+        )}
+        <div className="article-item__info">
+          {isAuthorAvatarIncluded && (
             <div className="article-item__author-image">
               <a aria-label="John Doe" href="/">
-                <img src={johnDoeImg} alt="john-doe" />
+                <img src={article.author.img} alt="john-doe" />
               </a>
             </div>
-            <div className="article-item__info-right">
+          )}
+          <div className="article-item__info-right">
+            {isAuthorNameIncluded && (
               <div className="article-item__author-name">
                 <a href="/">
-                  <strong>John Doe</strong>
+                  <strong>{article.author.name}</strong>
                 </a>
               </div>
-              <div className="article-item__datetime">
-                <div className="date">June 02, 2020</div>
-                <div className="time">
-                  <ClockLogo />1 min
-                </div>
+            )}
+            <div className="article-item__datetime">
+              <div className="date">{article.datetime.date}</div>
+              <div className="time">
+                <ClockLogo />
+                {article.datetime.time}
               </div>
             </div>
           </div>
         </div>
-      </article>
-    );
-  }
-  if (listType === "regular") {
-    return (
-      <article className="article-item style-card">
-        <div className="article-item__thumbnail">
-          <a href="/">
-            <img src={articleImg} alt="assets/images/blog-1.jpg" />
-          </a>
-        </div>
-        <div className="article-item__content">
-          <h2 className="article-item__title">
-            <a href="/post-detail.html">
-              Only Someone Who's Seen The Mummy Will Pass This
-            </a>
-          </h2>
-          <div className="article-item__info">
-            <div className="article-item__info-right">
-              <div className="article-item__author-name">
-                <a href="/">
-                  <strong>John Doe</strong>
-                </a>
-              </div>
-              <div className="article-item__datetime">
-                <div className="date">June 02, 2020</div>
-                <div className="time">
-                  <ClockLogo />1 min
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </article>
-    );
-  }
-  if (listType === "search") {
-    return (
-      <article className="article-item style-card">
-        <div className="article-item__thumbnail">
-          <a href="/">
-            <img src={articleImg} alt="assets/images/blog-1.jpg" />
-          </a>
-        </div>
-        <div className="article-item__content">
-          <ul className="article-item__categories">
-            <li>
-              <a href="/" className="btn btn-category">
-                News
-              </a>
-            </li>
-            <li>
-              <a href="/" className="btn btn-category">
-                News
-              </a>
-            </li>
-          </ul>
-          <h2 className="article-item__title">
-            <a href="/">Only Someone Who's Seen The Mummy Will Pass This</a>
-          </h2>
-          <div className="article-item__info">
-            <div className="article-item__info-right">
-              <div className="article-item__author-name">
-                <a href="/">
-                  <strong>John Doe</strong>
-                </a>
-              </div>
-              <div className="article-item__datetime">
-                <div className="date">June 02, 2020</div>
-                <div className="time">
-                  <ClockLogo />1 min
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </article>
-    );
-  }
+      </div>
+    </article>
+  );
 }
 
 export default Article;
