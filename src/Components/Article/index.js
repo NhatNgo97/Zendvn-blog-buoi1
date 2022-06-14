@@ -1,6 +1,6 @@
 import { ReactComponent as ClockLogo } from "../../assets/img/clock-logo.svg";
 import "../Shared/Bootstrap/bootstrap-tcl.css";
-import "./article.css";
+import "./Article.css";
 import "../Shared/Main/main.css";
 import Button from "../Shared/Button/Button";
 

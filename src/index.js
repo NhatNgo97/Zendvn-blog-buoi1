@@ -1,5 +1,5 @@
-import "./components/Shared/Bootstrap/bootstrap-tcl.css";
-import "./components/Shared/Main/main.css";
+import "./Components/Shared/Bootstrap/bootstrap-tcl.css";
+import "./Components/Shared/Main/main.css";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
