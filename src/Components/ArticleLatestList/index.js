@@ -8,7 +8,7 @@ function ArticleLatestList() {
   return (
     <div className="latest-news section">
       <div className="tcl-container">
-        <MainTitle text="Popular Articles" />
+        <MainTitle text="Latest Articles" />
         <div className="latest-news__list spacing">
           <div className="latest-news__card">
             <Article listType="latest" />

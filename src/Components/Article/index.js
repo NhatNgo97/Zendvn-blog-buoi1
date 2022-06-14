@@ -4,6 +4,7 @@ import johnDoeImg from "../../assets/img/john-doe.png";
 import "../Shared/Bootstrap/bootstrap-tcl.css";
 import "./article.css";
 import "../Shared/Main/main.css";
+import Button from "../Shared/Button/Button";
 
 function Article({ listType, isStyleRow }) {
   if (listType === "latest") {
@@ -61,14 +62,10 @@ function Article({ listType, isStyleRow }) {
         <div className="article-item__content">
           <ul className="article-item__categories">
             <li>
-              <a href="/post-detail" className="btn btn-category">
-                News
-              </a>
+              <Button type="tag" text="News" />
             </li>
             <li>
-              <a href="/post-detail" className="btn btn-category">
-                News
-              </a>
+              <Button type="tag" text="News" />
             </li>
           </ul>
           <ul className="article-item__stats">

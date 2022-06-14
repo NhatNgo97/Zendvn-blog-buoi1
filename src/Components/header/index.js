@@ -1,8 +1,7 @@
-import { ReactComponent as SearchLogo } from "../../assets/img/search-logo.svg";
+import SearchLogo from "../../assets/img/search-logo.svg";
 import pageLogo from "../../assets/img/logo.png";
 import "./header.css";
-import "../Shared/Bootstrap/bootstrap-tcl.css";
-import "../Shared/Main/main.css";
+import Input from "../Shared/Input";
 
 function Header() {
   return (
@@ -27,13 +26,11 @@ function Header() {
           <div className="tcl-col-4">
             <form action="/search.html" method="get">
               <div className="header-search">
-                <SearchLogo />
-                <input
+                <Input
+                  type="search"
                   className="header-search__input"
-                  type="text"
-                  placeholder="Search articles here ..."
-                  aria-label="Search"
-                  name="query"
+                  icon={SearchLogo}
+                  placeHolder="Search"
                 />
               </div>
             </form>

@@ -1,7 +1,7 @@
 import Article from "../Article";
 import "./ArticleList.css";
 import "../Shared/Bootstrap/bootstrap-tcl.css";
-import PrimaryButton from "../Shared/Button/PrimaryButton";
+import Button from "../Shared/Button/Button";
 import "../Shared/Main/main.css";
 import MainTitle from "../Shared/MainTitle/MainTitle";
 
@@ -26,7 +26,7 @@ function ArticleList({ pageType }) {
   return (
     <div className="articles-list section">
       <div className="tcl-container">
-        <MainTitle text="News List" />
+        <MainTitle text="News List" isIncludeButton={true} />
 
         <div className="tcl-row">
           <div className="tcl-col-12 tcl-col-md-6">
@@ -49,7 +49,7 @@ function ArticleList({ pageType }) {
           </div>
         </div>
       </div>
-      <PrimaryButton text="Load More" />
+      <Button type="primary" text="Load More" />
     </div>
   );
 }
