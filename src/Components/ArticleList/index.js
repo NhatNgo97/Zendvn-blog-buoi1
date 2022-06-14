@@ -49,7 +49,12 @@ function ArticleList({ pageType }) {
           </div>
         </div>
       </div>
-      <Button type="primary" text="Load More" />
+      <Button
+        haveLoadingIcon={true}
+        type="primary"
+        text="Load More"
+        size="large"
+      />
     </div>
   );
 }

@@ -62,10 +62,10 @@ function Article({ listType, isStyleRow }) {
         <div className="article-item__content">
           <ul className="article-item__categories">
             <li>
-              <Button type="tag" text="News" />
+              <Button type="category" text="News" />
             </li>
             <li>
-              <Button type="tag" text="News" />
+              <Button type="category" text="News" />
             </li>
           </ul>
           <ul className="article-item__stats">
