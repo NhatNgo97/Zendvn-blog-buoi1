@@ -1,5 +1,6 @@
 import Comments from "../Comments/comments";
 import CommentForm from "../Comments/conmentForm";
+import Button from "../Shared/Button/Button";
 import "./post-detail.css";
 import PostAuthor from "./postAuthor/postAuthor";
 import RelatedPosts from "./relatedPosts/relatedPosts";
@@ -18,7 +19,7 @@ function PostDetail() {
           <ul className="post-detail__info">
             <li className="item author">
               By{" "}
-              <a href="#">
+              <a href="/">
                 <strong>John Smith</strong>
               </a>
             </li>
@@ -105,24 +106,16 @@ function PostDetail() {
                   <h2>Tags</h2>
                   <ul>
                     <li className="item">
-                      <a href="#" class="btn btn-default">
-                        HTML
-                      </a>
+                      <Button type="tag" text="HTML" />
                     </li>
                     <li className="item">
-                      <a href="#" class="btn btn-default">
-                        CSS3
-                      </a>
+                      <Button type="tag" text="CSS3" />
                     </li>
                     <li className="item">
-                      <a href="#" class="btn btn-default">
-                        React
-                      </a>
+                      <Button type="tag" text="React" />
                     </li>
                     <li className="item">
-                      <a href="#" class="btn btn-default">
-                        Vue
-                      </a>
+                      <Button type="tag" text="Vue" />
                     </li>
                   </ul>
                 </div>

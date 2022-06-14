@@ -36,16 +36,16 @@ function Footer() {
               </div>
               <ul className="footer-content__list">
                 <li>
-                  <a href="#">ReactJs</a>
+                  <a href="/">ReactJs</a>
                 </li>
                 <li>
-                  <a href="#">Javascript</a>
+                  <a href="/">Javascript</a>
                 </li>
                 <li>
-                  <a href="#">Angular</a>
+                  <a href="/">Angular</a>
                 </li>
                 <li>
-                  <a href="#">HTML, HTML5</a>
+                  <a href="/">HTML, HTML5</a>
                 </li>
               </ul>
             </div>

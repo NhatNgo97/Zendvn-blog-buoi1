@@ -1,8 +1,7 @@
-import { ReactComponent as SearchLogo } from "../../assets/img/search-logo.svg";
+import SearchLogo from "../../assets/img/search-logo.svg";
 import pageLogo from "../../assets/img/logo.png";
 import "./header.css";
-import "../Shared/Bootstrap/bootstrap-tcl.css";
-import "../Shared/Main/main.css";
+import Input from "../Shared/Input";
 
 function Header() {
   return (
@@ -27,13 +26,11 @@ function Header() {
           <div className="tcl-col-4">
             <form action="/search.html" method="get">
               <div className="header-search">
-                <SearchLogo />
-                <input
+                <Input
+                  type="search"
                   className="header-search__input"
-                  type="text"
-                  placeholder="Search articles here ..."
-                  aria-label="Search"
-                  name="query"
+                  icon={SearchLogo}
+                  placeHolder="Search"
                 />
               </div>
             </form>
@@ -42,42 +39,42 @@ function Header() {
             <div className="header-nav">
               <ul className="header-nav__lists">
                 <li>
-                  <a href="#">Home</a>
+                  <a href="/">Home</a>
                 </li>
                 <li>
-                  <a href="#">Our Team</a>
+                  <a href="/">Our Team</a>
                   <ul>
                     <li>
                       <a href="./login">Our Team 1</a>
                     </li>
                     <li>
-                      <a href="#">Our Team 2</a>
+                      <a href="/">Our Team 2</a>
                     </li>
                     <li>
-                      <a href="#">Our Team 3</a>
+                      <a href="/">Our Team 3</a>
                     </li>
                   </ul>
                 </li>
                 <li>
-                  <a href="#">Contact</a>
+                  <a href="/">Contact</a>
                   <ul>
                     <li>
-                      <a href="#">Contact 1</a>
+                      <a href="/">Contact 1</a>
                     </li>
                     <li>
-                      <a href="#">Contact 2</a>
+                      <a href="/">Contact 2</a>
                     </li>
                     <li>
-                      <a href="#">Contact 3</a>
+                      <a href="/">Contact 3</a>
                       <ul>
                         <li>
-                          <a href="#">Contact 11</a>
+                          <a href="/">Contact 11</a>
                         </li>
                         <li>
-                          <a href="#">Contact 12</a>
+                          <a href="/">Contact 12</a>
                         </li>
                         <li>
-                          <a href="#">Contact 13</a>
+                          <a href="/">Contact 13</a>
                         </li>
                       </ul>
                     </li>

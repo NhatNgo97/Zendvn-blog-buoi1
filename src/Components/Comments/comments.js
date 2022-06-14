@@ -11,12 +11,12 @@ function Comments() {
       <li className="item">
         <div className="comments__section">
           <div className="comments__section--avatar">
-            <a href="#">
+            <a href="/">
               <img src={avatar1} alt="" />
             </a>
           </div>
           <div className="comments__section--content">
-            <a href="#" class="comments__section--user">
+            <a href="/" class="comments__section--user">
               John Smith
             </a>
             <p className="comments__section--time">2 minutes ago</p>
@@ -34,12 +34,12 @@ function Comments() {
           <li className="item">
             <div className="comments__section">
               <div className="comments__section--avatar">
-                <a href="#">
+                <a href="/">
                   <img src={avatar3} alt="" />
                 </a>
               </div>
               <div className="comments__section--content">
-                <a href="#" className="comments__section--user">
+                <a href="/" className="comments__section--user">
                   John Smith
                 </a>
                 <p className="comments__section--time">2 minutes ago</p>
@@ -53,12 +53,12 @@ function Comments() {
           <li className="item">
             <div className="comments__section">
               <div className="comments__section--avatar">
-                <a href="#">
+                <a href="/">
                   <img src={avatar4} alt="" />
                 </a>
               </div>
               <div className="comments__section--content">
-                <a href="#" class="comments__section--user">
+                <a href="/" class="comments__section--user">
                   John Smith
                 </a>
                 <p className="comments__section--time">2 minutes ago</p>
@@ -78,12 +78,12 @@ function Comments() {
       <li className="item">
         <div className="comments__section">
           <div className="comments__section--avatar">
-            <a href="#">
+            <a href="/">
               <img src={avatar2} alt="" />
             </a>
           </div>
           <div className="comments__section--content">
-            <a href="#" className="comments__section--user">
+            <a href="/" className="comments__section--user">
               John Smith
             </a>
             <p className="comments__section--time">2 minutes ago</p>
@@ -95,7 +95,7 @@ function Comments() {
           </div>
         </div>
         <div className="comments__hidden">
-          <a href="#">
+          <a href="/">
             <i className="icons ion-ios-undo"></i> Xem thêm 2 câu trả lời
           </a>
         </div>
@@ -104,12 +104,12 @@ function Comments() {
       <li className="item">
         <div className="comments__section">
           <div className="comments__section--avatar">
-            <a href="#">
+            <a href="/">
               <img src={avatar3} alt="" />
             </a>
           </div>
           <div className="comments__section--content">
-            <a href="#" class="comments__section--user">
+            <a href="/" class="comments__section--user">
               John Smith
             </a>
             <p className="comments__section--time">2 minutes ago</p>

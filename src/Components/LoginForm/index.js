@@ -1,5 +1,4 @@
-import "../Shared/Main/main.css";
-import "../Shared/Bootstrap/bootstrap-tcl.css";
+import Input from "../Shared/Input";
 import "./loginForm.css";
 
 function LoginForm() {
@@ -14,12 +13,11 @@ function LoginForm() {
               <form action="">
                 <div className="form-control">
                   <label htmlFor="">Username</label>
-                  <input type="text" placeholder="Enter Username ..." />
+                  <Input inputType="text" placeHolder="Enter Username" />
                 </div>
                 <div className="form-control">
                   <label htmlFor="">Password</label>
-                  <i className="toggle-password ion-eye"></i>
-                  <input type="password" placeholder="Enter Password ..." />
+                  <Input inputType="password" placeHolder="Enter password" />
                 </div>
                 <div className="d-flex tcl-jc-between tcl-ais-center">
                   <button className="btn btn-primary btn-size-large">
