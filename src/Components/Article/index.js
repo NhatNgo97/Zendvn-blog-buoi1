@@ -3,14 +3,9 @@ import "../Shared/Bootstrap/bootstrap-tcl.css";
 import "./Article.css";
 import "../Shared/Main/main.css";
 import Button from "../Shared/Button/Button";
+import cls from "classnames";
 
-/**
- *
- * @listType {string} paramasd
- * @returns
- */
 function Article({
-  listType,
   isStyleRow,
   isStyleCard,
   isDescriptionIncluded,
@@ -19,18 +14,15 @@ function Article({
   isAuthorAvatarIncluded,
   isAuthorNameIncluded,
   article,
-  style,
+  ...restProps
 }) {
-  var articleClassName = "article-item";
-  if (isStyleCard === true) {
-    articleClassName = articleClassName + " style-card";
-  }
-  if (isStyleRow === true) {
-    articleClassName = articleClassName + " style-row";
-  }
+  const classes = cls("article-item", {
+    "style-card": isStyleCard === true,
+    "style-row": isStyleRow === true,
+  });
 
   return (
-    <article style={style} className={articleClassName}>
+    <article {...restProps} className={classes}>
       <div className="article-item__thumbnail">
         <a href="/">
           <img src={article.thumbnail} alt="assets/images/blog-1.jpg" />
