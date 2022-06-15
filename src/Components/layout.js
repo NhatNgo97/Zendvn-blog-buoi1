@@ -1,5 +1,5 @@
-import Header from "./header"
-import Footer from "./Footer"
+import Header from "./header";
+import Footer from "./Footer";
 import Main from "./main";
 function Layout() {
   return (
@@ -8,7 +8,7 @@ function Layout() {
       <Main />
       <Footer />
     </>
-  )
+  );
 }
 
 export default Layout;

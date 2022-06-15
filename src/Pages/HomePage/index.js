@@ -1,7 +1,7 @@
-import ArticleLatestList from "../../components/ArticleLatestList";
-import ArticleList from "../../components/ArticleList";
-import ArticlePopularList from "../../components/ArticlePopularList";
-import "../../components/Shared/Main/main.css";
+import ArticleLatestList from "../../Components/ArticleLatestList";
+import ArticleList from "../../Components/ArticleList";
+import ArticlePopularList from "../../Components/ArticlePopularList";
+import "../../Components/Shared/Main/main.css";
 
 function HomePage() {
   return (
