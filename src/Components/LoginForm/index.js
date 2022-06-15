@@ -13,11 +13,11 @@ function LoginForm() {
               <form action="">
                 <div className="form-control">
                   <label htmlFor="">Username</label>
-                  <Input inputType="text" placeHolder="Enter Username" />
+                  <Input type="text" placeholder="Enter Username" />
                 </div>
                 <div className="form-control">
                   <label htmlFor="">Password</label>
-                  <Input inputType="password" placeHolder="Enter password" />
+                  <Input type="password" placeholder="Enter password" />
                 </div>
                 <div className="d-flex tcl-jc-between tcl-ais-center">
                   <button className="btn btn-primary btn-size-large">

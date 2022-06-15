@@ -32,7 +32,7 @@ function ArticleLatestList() {
   return (
     <div className="latest-news section">
       <div className="tcl-container">
-        <MainTitle text="Latest Articles" />
+        <MainTitle>Latest Articles</MainTitle>
         <div className="latest-news__list spacing">
           {articleList.map((a) => (
             <div key={Math.random(0, 1)} className="latest-news__card">

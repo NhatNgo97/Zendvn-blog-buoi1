@@ -30,7 +30,7 @@ function Header() {
                   type="search"
                   className="header-search__input"
                   icon={SearchLogo}
-                  placeHolder="Search"
+                  placeholder="Search"
                 />
               </div>
             </form>
