@@ -25,14 +25,7 @@ function Header() {
           </div>
           <div className="tcl-col-4">
             <form action="/search.html" method="get">
-              <div className="header-search">
-                <Input
-                  type="search"
-                  className="header-search__input"
-                  icon={SearchLogo}
-                  placeholder="Search"
-                />
-              </div>
+              <Input type="search" placeholder="Search" icon={SearchLogo} />
             </form>
           </div>
           <div className="tcl-col-6">

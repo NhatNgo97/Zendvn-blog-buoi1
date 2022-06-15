@@ -11,14 +11,16 @@ function LoginForm() {
             <h1 className="form-title text-center">Login</h1>
             <div className="form-login-register">
               <form action="">
-                <div className="form-control">
-                  <label htmlFor="">Username</label>
-                  <Input type="text" placeholder="Enter Username" />
-                </div>
-                <div className="form-control">
-                  <label htmlFor="">Password</label>
-                  <Input type="password" placeholder="Enter password" />
-                </div>
+                <Input
+                  type="text"
+                  label="Username"
+                  placeholder="Enter Username"
+                />
+                <Input
+                  type="password"
+                  label="Password"
+                  placeholder="Enter your password"
+                />
                 <div className="d-flex tcl-jc-between tcl-ais-center">
                   <button className="btn btn-primary btn-size-large">
                     Submit
