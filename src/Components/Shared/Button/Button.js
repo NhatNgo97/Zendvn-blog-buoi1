@@ -1,30 +1,52 @@
 import { ReactComponent as RotatingIcon } from "../../../assets/img/rotatingIcon.svg";
 import "./button.css";
+import cls from "classnames";
 import { useState } from "react";
 
-function Button({ type, text, size, href, haveLoadingIcon, callback }) {
-  const [isLoading, setIsLoading] = useState(false);
-  const classString = "btn btn-" + type + " btn-size-" + size;
+function Button({
+  type = "default",
+  htmlType,
+  children,
+  size,
+  isLoading = false,
+  as = "button",
+  loadingPos = "left",
+  className,
+  ...restProps
+}) {
+  const classes = cls("btn", className, {
+    "btn-category": type === "category",
+    "btn-default": type === "default",
+    "btn-primary": type === "primary",
+    "btn-size-large": size === "large",
+  });
 
-  function handleClick() {
-    setIsLoading(true);
-    callback();
-  }
+  const content = (
+    <>
+      {loadingPos === "left" && isLoading && <RotatingIcon />}
+      {children}
+      {loadingPos === "right" && isLoading && <RotatingIcon />}
+    </>
+  );
 
-  if (type !== undefined) {
+  const injectedProps = {
+    className: classes,
+    type: htmlType,
+    ...restProps,
+  };
+
+  if (as === "a") {
     return (
       <div className="text-center">
-        <button href={href} onClick={handleClick} className={classString}>
-          {haveLoadingIcon && isLoading && <RotatingIcon />}
-          {text}
-        </button>
+        <a {...injectedProps}>{content}</a>
       </div>
     );
   }
+
   return (
-    <button href={href} className="btn btn-default">
-      {text}
-    </button>
+    <div className="text-center">
+      <button {...injectedProps}>{content}</button>
+    </div>
   );
 }
 

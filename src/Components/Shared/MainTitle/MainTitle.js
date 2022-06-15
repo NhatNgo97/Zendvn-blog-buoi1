@@ -7,7 +7,7 @@ function MainTitle({ text, isIncludeButton }) {
   return (
     <div className="main-title spacing d-flex tcl-jc-between tcl-ais-center">
       <h2>{text}</h2>
-      {isIncludeButton && <Button text="More" />}
+      {isIncludeButton && <Button children="More" />}
     </div>
   );
 }

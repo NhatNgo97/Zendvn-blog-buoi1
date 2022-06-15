@@ -41,7 +41,7 @@ function Article({
           <ul className="article-item__categories">
             {article.categories.map((a) => (
               <li key={Math.random(0, 1)}>
-                <Button type="category" text={a} />
+                <Button type="category" children={a} />
               </li> /// key should be a.id
             ))}
           </ul>
