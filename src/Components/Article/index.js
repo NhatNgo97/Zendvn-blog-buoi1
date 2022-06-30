@@ -4,6 +4,8 @@ import "./Article.css";
 import "../Shared/Main/main.css";
 import Button from "../Shared/Button/Button";
 import cls from "classnames";
+import { Link } from "react-router-dom";
+import Title from "antd/lib/skeleton/Title";
 
 function Article({
   isStyleRow,
@@ -24,9 +26,9 @@ function Article({
   return (
     <article {...restProps} className={classes}>
       <div className="article-item__thumbnail">
-        <a href="/">
+        <Link to="post-detail/abcd">
           <img src={article.thumbnail} alt="assets/images/blog-1.jpg" />
-        </a>
+        </Link>
       </div>
       <div className="article-item__content">
         {isCategoryIncluded && (
@@ -47,7 +49,7 @@ function Article({
           </ul>
         )}
         <h2 className="article-item__title">
-          <a href="/">{article.title}</a>
+          <Link to="/post-detail/asdasd">{article.title}</Link>
         </h2>
         {isDescriptionIncluded && (
           <p className="article-item__desc">{article.description}</p>
