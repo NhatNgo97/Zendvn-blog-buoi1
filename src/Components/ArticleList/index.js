@@ -48,7 +48,7 @@ function ArticleList({ pageType }) {
   return (
     <div className="articles-list section">
       <div className="tcl-container">
-        <MainTitle text="News List" isIncludeButton={true} />
+        <MainTitle btnLabel="View More">Aritlce List</MainTitle>
 
         <div className="tcl-row">
           {articleList.map((a) => (
@@ -62,12 +62,7 @@ function ArticleList({ pageType }) {
           ))}
         </div>
       </div>
-      <Button
-        haveLoadingIcon={true}
-        type="primary"
-        text="Load More"
-        size="large"
-      />
+      <Button type="primary" children="Load More" size="large" />
     </div>
   );
 }

@@ -2,8 +2,14 @@ import SearchLogo from "../../assets/img/search-logo.svg";
 import pageLogo from "../../assets/img/logo.png";
 import "./header.css";
 import Input from "../Shared/Input";
+import { useNavigate } from "react-router-dom";
 
 function Header() {
+  let navigate = useNavigate();
+  function handleSearch() {
+    console.log("abc");
+    navigate("/search");
+  }
   return (
     <header id="header">
       <div className="tcl-container">
@@ -24,15 +30,8 @@ function Header() {
             </div>
           </div>
           <div className="tcl-col-4">
-            <form action="/search.html" method="get">
-              <div className="header-search">
-                <Input
-                  type="search"
-                  className="header-search__input"
-                  icon={SearchLogo}
-                  placeHolder="Search"
-                />
-              </div>
+            <form onSubmit={handleSearch} method="get">
+              <Input type="search" placeholder="Search" icon={SearchLogo} />
             </form>
           </div>
           <div className="tcl-col-6">

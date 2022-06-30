@@ -1,8 +1,7 @@
 import Input from "../Shared/Input";
-import "./loginForm.css";
 import { Link } from "react-router-dom";
 
-function LoginForm() {
+function RegisterForm() {
   return (
     <main className="login">
       <div className="spacing"></div>
@@ -14,6 +13,11 @@ function LoginForm() {
               <form action="">
                 <Input
                   type="text"
+                  label="Nick name"
+                  placeholder="Enter your nickname"
+                />
+                <Input
+                  type="text"
                   label="Username"
                   placeholder="Enter Username"
                 />
@@ -22,11 +26,17 @@ function LoginForm() {
                   label="Password"
                   placeholder="Enter your password"
                 />
+                <Input
+                  type="password"
+                  label="Confirm Password"
+                  placeholder="Confirm your password"
+                />
+
                 <div className="d-flex tcl-jc-between tcl-ais-center">
                   <button className="btn btn-primary btn-size-large">
-                    Submit
+                    Register
                   </button>
-                  <Link to="/register">Regiter</Link>
+                  <Link to="">Back</Link>
                 </div>
               </form>
             </div>
@@ -37,5 +47,4 @@ function LoginForm() {
     </main>
   );
 }
-
-export default LoginForm;
+export default RegisterForm;

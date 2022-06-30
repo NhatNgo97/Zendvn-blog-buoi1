@@ -33,7 +33,7 @@ function ArticlePopularList() {
   return (
     <div className="popular-news section bg-white-blue">
       <div className="tcl-container">
-        <MainTitle text="Popular Articles" isIncludeButton={true} />
+        <MainTitle btnLabel="VIEW MORE">Aritlce Popular</MainTitle>
         <div className="popular-news__list spacing">
           <div className="popular-news__list--left">
             <div className="popular-news__list--row">

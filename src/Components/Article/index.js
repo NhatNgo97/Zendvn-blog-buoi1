@@ -3,14 +3,11 @@ import "../Shared/Bootstrap/bootstrap-tcl.css";
 import "./Article.css";
 import "../Shared/Main/main.css";
 import Button from "../Shared/Button/Button";
+import cls from "classnames";
+import { Link } from "react-router-dom";
+import Title from "antd/lib/skeleton/Title";
 
-/**
- *
- * @listType {string} paramasd
- * @returns
- */
 function Article({
-  listType,
   isStyleRow,
   isStyleCard,
   isDescriptionIncluded,
@@ -19,29 +16,26 @@ function Article({
   isAuthorAvatarIncluded,
   isAuthorNameIncluded,
   article,
-  style,
+  ...restProps
 }) {
-  var articleClassName = "article-item";
-  if (isStyleCard === true) {
-    articleClassName = articleClassName + " style-card";
-  }
-  if (isStyleRow === true) {
-    articleClassName = articleClassName + " style-row";
-  }
+  const classes = cls("article-item", {
+    "style-card": isStyleCard === true,
+    "style-row": isStyleRow === true,
+  });
 
   return (
-    <article style={style} className={articleClassName}>
+    <article {...restProps} className={classes}>
       <div className="article-item__thumbnail">
-        <a href="/">
+        <Link to="post-detail/abcd">
           <img src={article.thumbnail} alt="assets/images/blog-1.jpg" />
-        </a>
+        </Link>
       </div>
       <div className="article-item__content">
         {isCategoryIncluded && (
           <ul className="article-item__categories">
             {article.categories.map((a) => (
               <li key={Math.random(0, 1)}>
-                <Button type="category" text={a} />
+                <Button type="category" children={a} />
               </li> /// key should be a.id
             ))}
           </ul>
@@ -55,7 +49,7 @@ function Article({
           </ul>
         )}
         <h2 className="article-item__title">
-          <a href="/">{article.title}</a>
+          <Link to="/post-detail/asdasd">{article.title}</Link>
         </h2>
         {isDescriptionIncluded && (
           <p className="article-item__desc">{article.description}</p>
