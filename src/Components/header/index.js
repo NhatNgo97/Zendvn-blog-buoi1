@@ -2,7 +2,7 @@ import SearchLogo from "../../assets/img/search-logo.svg";
 import pageLogo from "../../assets/img/logo.png";
 import "./header.css";
 import Input from "../Shared/Input";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 function Header() {
   let navigate = useNavigate();
@@ -16,7 +16,7 @@ function Header() {
         <div className="tcl-row tcl-no-gutters header">
           <div className="tcl-col-2">
             <div className="header-logo">
-              <a href="/">
+              <Link to="/">
                 <img
                   style={{
                     width: "100%",
@@ -26,7 +26,7 @@ function Header() {
                   src={pageLogo}
                   alt="Go to homepage"
                 />
-              </a>
+              </Link>
             </div>
           </div>
           <div className="tcl-col-4">
@@ -82,9 +82,9 @@ function Header() {
               </ul>
               <ul className="header-nav__lists">
                 <li className="user">
-                  <a href="login">
+                  <Link to="/login">
                     <i className="icons ion-person"></i> Tài khoản
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
