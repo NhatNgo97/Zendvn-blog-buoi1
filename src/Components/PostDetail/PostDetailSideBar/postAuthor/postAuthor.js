@@ -1,4 +1,4 @@
-import blogDetail from "../../../assets/img/blog-detail.jpg";
+import blogDetail from "../../../../assets/img/blog-detail.jpg";
 import "./post-author.css";
 
 function PostAuthor({ author }) {

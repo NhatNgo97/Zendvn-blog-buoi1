@@ -6,8 +6,10 @@ import "../Shared/Main/main.css";
 import MainTitle from "../Shared/MainTitle/MainTitle";
 import Thumbnail from "../../assets/img/blog-1.jpg";
 import Avatar from "../../assets/img/john-doe.png";
+import clx from "classnames";
 
 function ArticleList({ pageType }) {
+  const classes = clx("tcl-row", { "tcl-jc-center": pageType === "search" });
   //JSON placeholder
   const article = {
     id: 1,
@@ -31,16 +33,13 @@ function ArticleList({ pageType }) {
   const articleList = [article, article, article, article, article, article];
   if (pageType === "search") {
     return (
-      <div className="tcl-container">
-        <div className="main-title main-title__search spacing">
-          <h2>4 Results found for "search query"</h2>
-          <div className="tcl-row tcl-jc-center">
-            {articleList.map((a) => (
-              <div key={Math.random(0, 1)} className="tcl-col-12 tcl-col-md-8">
-                <Article article={article} isStyleCard={true} />
-              </div>
-            ))}
-          </div>
+      <div className="articles-list section">
+        <div className={classes}>
+          {articleList.map((a) => (
+            <div key={Math.random(0, 1)} className="tcl-col-12 tcl-col-md-8">
+              <Article article={article} isStyleCard={true} />
+            </div>
+          ))}
         </div>
       </div>
     );
@@ -50,7 +49,7 @@ function ArticleList({ pageType }) {
       <div className="tcl-container">
         <MainTitle btnLabel="View More">Aritlce List</MainTitle>
 
-        <div className="tcl-row">
+        <div className={classes}>
           {articleList.map((a) => (
             <div key={Math.random(0, 1)} className="tcl-col-12 tcl-col-md-6">
               <Article
