@@ -1,8 +1,7 @@
-import "./post-detail.css";
-import PostDetailHead from "./PostDetailHead/PostDetailHead";
-
 import PostDetailContent from "./PostDetailContent/PostDetailContent";
+import PostDetailHead from "./PostDetailHead/PostDetailHead";
 import PostDetailSideBar from "./PostDetailSideBar/PostDetailSideBar";
+import "./post-detail.css";
 
 function PostDetail() {
   return (
@@ -21,5 +20,4 @@ function PostDetail() {
     </main>
   );
 }
-
 export default PostDetail;
