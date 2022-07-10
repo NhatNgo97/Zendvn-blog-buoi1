@@ -10,6 +10,12 @@ import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import localeVi from "dayjs/locale/vi";
 import { DATE_TEMPLATE } from "../../contansts";
+import ArtcileInfo from "./ArticleInfo";
+import { ArticleThumb } from "./ArticleThumb";
+import ArticleCategories from "./ArticleCategories";
+import ArticleStats from "./ArticleStats";
+import ArticleDesc from "./ArticleDesc";
+import ArtilceTitle from "./ArticleTitle";
 
 dayjs.locale(localeVi);
 dayjs.extend(relativeTime);
@@ -33,72 +39,29 @@ function Article({
   const createdDateObj = dayjs(article.createdDate);
   const dateFormatted = createdDateObj.format(DATE_TEMPLATE);
   const dateRelative = createdDateObj.fromNow();
-  console.log(createdDateObj, dateFormatted, dateRelative);
+  const author = article.author;
+  const title = article.title;
+  const categories = article.categories;
+  const thumbnail = article.thumbnail;
+  const slug = article.slug;
+  const slugLink = "/post-detail/" + slug;
+  const views = article.views;
+  const desc = article.desc;
   return (
     <article {...restProps} className={classes}>
-      <div className="article-item__thumbnail">
-        <Link to={"post-detail/" + article.slug}>
-          <img src={article.thumbnail} alt="assets/images/blog-1.jpg" />
-        </Link>
-      </div>
+      <ArticleThumb thumbnail={thumbnail} slugLink={slugLink} />
       <div className="article-item__content">
-        {isCategoryIncluded && (
-          <ul className="article-item__categories">
-            {article.categories.map((a) => (
-              <li key={Math.random()}>
-                <Button type="category" children={a} />
-              </li> /// key should be a.id
-            ))}
-          </ul>
-        )}
-        {isStatsIncluded && (
-          <ul className="article-item__stats">
-            <li>
-              <i className="icons ion-ios-eye"></i>
-              <span className="text">{article.view_count + " views"}</span>
-            </li>
-          </ul>
-        )}
-        <h2 className="article-item__title">
-          <Link to={"post-detail/" + article.slug}>{article.title}</Link>
-        </h2>
-        {isDescriptionIncluded && (
-          <p className="article-item__desc">{article.excerpt.rendered}</p>
-        )}
-        <div className="article-item__info">
-          {isAuthorAvatarIncluded && (
-            <div className="article-item__author-image">
-              <a aria-label="John Doe" href="/">
-                <img
-                  src={
-                    article.author.avatar
-                      ? article.author.avatar
-                      : "https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-portrait-176256935.jpg"
-                  }
-                  alt="john-doe"
-                />
-              </a>
-            </div>
-          )}
-          <div className="article-item__info-right">
-            {isAuthorNameIncluded && (
-              <div className="article-item__author-name">
-                <a href="/">
-                  <strong>{article.author.nickname}</strong>
-                </a>
-              </div>
-            )}
-            <div className="article-item__datetime">
-              <div className="date">{dateFormatted}</div>
-              &nbsp;
-              <div className="time">
-                <ClockLogo />
-                &nbsp;
-                {dateRelative}
-              </div>
-            </div>
-          </div>
-        </div>
+        {isCategoryIncluded && <ArticleCategories categories={categories} />}
+        {isStatsIncluded && <ArticleStats views={views} />}
+        <ArtilceTitle title={title} slugLink={slugLink} />
+        {isDescriptionIncluded && <ArticleDesc desc={desc} />}
+        <ArtcileInfo
+          isAuthorAvatarIncluded={isAuthorAvatarIncluded}
+          isAuthorNameIncluded={isAuthorNameIncluded}
+          author={author}
+          dateFormatted={dateFormatted}
+          dateRelative={dateRelative}
+        />
       </div>
     </article>
   );

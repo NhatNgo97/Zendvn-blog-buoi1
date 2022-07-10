@@ -19,7 +19,6 @@ export function getArticleLatestListAsyncAction() {
     try {
       const response = await PostService.getArticleLatest();
       const posts = response.data.map(mappingPostData);
-      console.log(posts);
       dispatch(getArticleLatestListAction(posts));
     } catch (err) {
       console.log(err);

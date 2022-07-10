@@ -10,5 +10,8 @@ export function mappingPostData(post) {
     thumbnail: post.featured_media_url,
     createdDate: post.date,
     slug: post.slug,
+    categories: post.categories,
+    views: post.view_vount,
+    desc: post.excerpt.rendered,
   };
 }
