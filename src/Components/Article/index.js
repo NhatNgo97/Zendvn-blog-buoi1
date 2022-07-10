@@ -6,6 +6,13 @@ import Button from "../Shared/Button/Button";
 import cls from "classnames";
 import { Link } from "react-router-dom";
 import Title from "antd/lib/skeleton/Title";
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
+import localeVi from "dayjs/locale/vi";
+import { DATE_TEMPLATE } from "../../contansts";
+
+dayjs.locale(localeVi);
+dayjs.extend(relativeTime);
 
 function Article({
   isStyleRow,
@@ -23,10 +30,14 @@ function Article({
     "style-row": isStyleRow === true,
   });
 
+  const createdDateObj = dayjs(article.createdDate);
+  const dateFormatted = createdDateObj.format(DATE_TEMPLATE);
+  const dateRelative = createdDateObj.fromNow();
+  console.log(createdDateObj, dateFormatted, dateRelative);
   return (
     <article {...restProps} className={classes}>
       <div className="article-item__thumbnail">
-        <Link to="post-detail/abcd">
+        <Link to={"post-detail/" + article.slug}>
           <img src={article.thumbnail} alt="assets/images/blog-1.jpg" />
         </Link>
       </div>
@@ -34,7 +45,7 @@ function Article({
         {isCategoryIncluded && (
           <ul className="article-item__categories">
             {article.categories.map((a) => (
-              <li key={Math.random(0, 1)}>
+              <li key={Math.random()}>
                 <Button type="category" children={a} />
               </li> /// key should be a.id
             ))}
@@ -44,21 +55,28 @@ function Article({
           <ul className="article-item__stats">
             <li>
               <i className="icons ion-ios-eye"></i>
-              <span className="text">{article.views + " views"}</span>
+              <span className="text">{article.view_count + " views"}</span>
             </li>
           </ul>
         )}
         <h2 className="article-item__title">
-          <Link to="/post-detail/asdasd">{article.title}</Link>
+          <Link to={"post-detail/" + article.slug}>{article.title}</Link>
         </h2>
         {isDescriptionIncluded && (
-          <p className="article-item__desc">{article.description}</p>
+          <p className="article-item__desc">{article.excerpt.rendered}</p>
         )}
         <div className="article-item__info">
           {isAuthorAvatarIncluded && (
             <div className="article-item__author-image">
               <a aria-label="John Doe" href="/">
-                <img src={article.author.img} alt="john-doe" />
+                <img
+                  src={
+                    article.author.avatar
+                      ? article.author.avatar
+                      : "https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-portrait-176256935.jpg"
+                  }
+                  alt="john-doe"
+                />
               </a>
             </div>
           )}
@@ -66,15 +84,17 @@ function Article({
             {isAuthorNameIncluded && (
               <div className="article-item__author-name">
                 <a href="/">
-                  <strong>{article.author.name}</strong>
+                  <strong>{article.author.nickname}</strong>
                 </a>
               </div>
             )}
             <div className="article-item__datetime">
-              <div className="date">{article.datetime.date}</div>
+              <div className="date">{dateFormatted}</div>
+              &nbsp;
               <div className="time">
                 <ClockLogo />
-                {article.datetime.time}
+                &nbsp;
+                {dateRelative}
               </div>
             </div>
           </div>

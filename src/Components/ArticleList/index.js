@@ -4,40 +4,20 @@ import "../Shared/Bootstrap/bootstrap-tcl.css";
 import Button from "../Shared/Button/Button";
 import "../Shared/Main/main.css";
 import MainTitle from "../Shared/MainTitle/MainTitle";
-import Thumbnail from "../../assets/img/blog-1.jpg";
-import Avatar from "../../assets/img/john-doe.png";
 import clx from "classnames";
+import { useSelector } from "react-redux";
 
 function ArticleList({ pageType }) {
   const classes = clx("tcl-row", { "tcl-jc-center": pageType === "search" });
-  //JSON placeholder
-  const article = {
-    id: 1,
-    thumbnail: Thumbnail,
-    categories: ["News", "News"],
-    views: 10000,
-    title: "Only Someone Who's Seen The Mummy Will Pass This",
-    description:
-      "Markdown is a lightweight markup language with plain-text-formatting syntax. Its design allows it to…",
-    author: {
-      name: "John Doe",
-      img: Avatar,
-    },
-    datetime: {
-      date: "June 02, 2020",
-      time: "1 min",
-    },
-  };
+  const postList = useSelector((state) => state.Post).slice(0, 6);
 
-  //list of article which is usually fetched from an API.
-  const articleList = [article, article, article, article, article, article];
   if (pageType === "search") {
     return (
       <div className="articles-list section">
         <div className={classes}>
-          {articleList.map((a) => (
-            <div key={Math.random(0, 1)} className="tcl-col-12 tcl-col-md-8">
-              <Article article={article} isStyleCard={true} />
+          {postList.map((a) => (
+            <div key={a.id} className="tcl-col-12 tcl-col-md-8">
+              <Article article={a} isStyleCard={true} />
             </div>
           ))}
         </div>
@@ -50,13 +30,9 @@ function ArticleList({ pageType }) {
         <MainTitle btnLabel="View More">Aritlce List</MainTitle>
 
         <div className={classes}>
-          {articleList.map((a) => (
-            <div key={Math.random(0, 1)} className="tcl-col-12 tcl-col-md-6">
-              <Article
-                isAuthorNameIncluded={true}
-                isStyleCard
-                article={article}
-              />
+          {postList.map((a) => (
+            <div key={a.id} className="tcl-col-12 tcl-col-md-6">
+              <Article isAuthorNameIncluded={true} isStyleCard article={a} />
             </div>
           ))}
         </div>
