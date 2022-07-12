@@ -1,5 +1,5 @@
 import "./related-posts.css";
-import { ReactComponent as ClockLogo } from "../../../assets/img/clock-logo.svg";
+import { ReactComponent as ClockLogo } from "../../../../assets/img/clock-logo.svg";
 
 function RelatedPosts() {
   return (

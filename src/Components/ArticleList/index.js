@@ -4,43 +4,33 @@ import "../Shared/Bootstrap/bootstrap-tcl.css";
 import Button from "../Shared/Button/Button";
 import "../Shared/Main/main.css";
 import MainTitle from "../Shared/MainTitle/MainTitle";
-import Thumbnail from "../../assets/img/blog-1.jpg";
-import Avatar from "../../assets/img/john-doe.png";
+import clx from "classnames";
+import { useSelector, useDispatch } from "react-redux";
+import { useState } from "react";
+import { getArticleRegularListAsyncAction } from "../../store/post/action";
 
 function ArticleList({ pageType }) {
-  //JSON placeholder
-  const article = {
-    id: 1,
-    thumbnail: Thumbnail,
-    categories: ["News", "News"],
-    views: 10000,
-    title: "Only Someone Who's Seen The Mummy Will Pass This",
-    description:
-      "Markdown is a lightweight markup language with plain-text-formatting syntax. Its design allows it to…",
-    author: {
-      name: "John Doe",
-      img: Avatar,
-    },
-    datetime: {
-      date: "June 02, 2020",
-      time: "1 min",
-    },
-  };
-
-  //list of article which is usually fetched from an API.
-  const articleList = [article, article, article, article, article, article];
+  const dispatch = useDispatch();
+  const classes = clx("tcl-row", { "tcl-jc-center": pageType === "search" });
+  const { articleList, page, totalPages } = useSelector(
+    (state) => state.Post.articleRegular
+  );
+  const [isLoading, setIsLoading] = useState(false);
+  async function handleLoadMore() {
+    setIsLoading(true);
+    await dispatch(getArticleRegularListAsyncAction({ page }));
+    setIsLoading(false);
+  }
+  const hasMorePage = page < totalPages;
   if (pageType === "search") {
     return (
-      <div className="tcl-container">
-        <div className="main-title main-title__search spacing">
-          <h2>4 Results found for "search query"</h2>
-          <div className="tcl-row tcl-jc-center">
-            {articleList.map((a) => (
-              <div key={Math.random(0, 1)} className="tcl-col-12 tcl-col-md-8">
-                <Article article={article} isStyleCard={true} />
-              </div>
-            ))}
-          </div>
+      <div className="articles-list section">
+        <div className={classes}>
+          {articleList.map((a) => (
+            <div key={a.id} className="tcl-col-12 tcl-col-md-8">
+              <Article article={a} isStyleCard={true} />
+            </div>
+          ))}
         </div>
       </div>
     );
@@ -50,19 +40,23 @@ function ArticleList({ pageType }) {
       <div className="tcl-container">
         <MainTitle btnLabel="View More">Aritlce List</MainTitle>
 
-        <div className="tcl-row">
+        <div className={classes}>
           {articleList.map((a) => (
-            <div key={Math.random(0, 1)} className="tcl-col-12 tcl-col-md-6">
-              <Article
-                isAuthorNameIncluded={true}
-                isStyleCard
-                article={article}
-              />
+            <div key={a.id} className="tcl-col-12 tcl-col-md-6">
+              <Article isAuthorNameIncluded={true} isStyleCard article={a} />
             </div>
           ))}
         </div>
       </div>
-      <Button type="primary" children="Load More" size="large" />
+      {hasMorePage && (
+        <Button
+          onClick={handleLoadMore}
+          isLoading={isLoading}
+          type="primary"
+          children="Load More"
+          size="large"
+        />
+      )}
     </div>
   );
 }

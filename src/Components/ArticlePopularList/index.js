@@ -3,33 +3,15 @@ import "../Shared/Bootstrap/bootstrap-tcl.css";
 import Article from "../Article";
 import "../Shared/Main/main.css";
 import MainTitle from "../Shared/MainTitle/MainTitle";
-import Thumbnail from "../../assets/img/blog-1.jpg";
-import Avatar from "../../assets/img/john-doe.png";
+import { useSelector } from "react-redux";
 
 function ArticlePopularList() {
-  //JSON placeholder
-  const article = {
-    id: 1,
-    thumbnail: Thumbnail,
-    categories: ["News", "News"],
-    views: 10000,
-    title: "Only Someone Who's Seen The Mummy Will Pass This",
-    description:
-      "Markdown is a lightweight markup language with plain-text-formatting syntax. Its design allows it to…",
-    author: {
-      name: "John Doe",
-      img: Avatar,
-    },
-    datetime: {
-      date: "June 02, 2020",
-      time: "1 min",
-    },
-  };
-  console.log(article.thumbnail);
+  const postList = useSelector((state) => state.Post.artcilePopular).slice(
+    0,
+    3
+  );
 
-  //list of article which is usually fetched from an API.
-  const articleList = [article, article, article];
-
+  if (postList.length === 0) return <div></div>;
   return (
     <div className="popular-news section bg-white-blue">
       <div className="tcl-container">
@@ -37,28 +19,19 @@ function ArticlePopularList() {
         <div className="popular-news__list spacing">
           <div className="popular-news__list--left">
             <div className="popular-news__list--row">
-              <div className="popular-news__list--card">
-                <Article
-                  isStatsIncluded={true}
-                  isAuthorAvatarIncluded={true}
-                  isAuthorNameIncluded={true}
-                  isDescriptionIncluded={true}
-                  isCategoryIncluded={true}
-                  isStyleCard={true}
-                  article={article}
-                />
-              </div>
-              <div className="popular-news__list--card">
-                <Article
-                  isStatsIncluded={true}
-                  isAuthorAvatarIncluded={true}
-                  isAuthorNameIncluded={true}
-                  isDescriptionIncluded={true}
-                  isCategoryIncluded={true}
-                  isStyleCard={true}
-                  article={article}
-                />
-              </div>
+              {postList.slice(0, 2).map((a) => (
+                <div key={a.id} className="popular-news__list--card">
+                  <Article
+                    isStatsIncluded={true}
+                    isAuthorAvatarIncluded={true}
+                    isAuthorNameIncluded={true}
+                    isDescriptionIncluded={true}
+                    isCategoryIncluded={true}
+                    isStyleCard={true}
+                    article={a}
+                  />
+                </div>
+              ))}
             </div>
           </div>
           <div className="popular-news__list--right">
@@ -72,7 +45,7 @@ function ArticlePopularList() {
                   isCategoryIncluded={true}
                   isStyleCard={true}
                   isStyleRow={true}
-                  article={article}
+                  article={postList[2]}
                 />
               </div>
             </div>

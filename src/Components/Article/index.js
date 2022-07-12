@@ -1,11 +1,13 @@
-import { ReactComponent as ClockLogo } from "../../assets/img/clock-logo.svg";
 import "../Shared/Bootstrap/bootstrap-tcl.css";
 import "./Article.css";
 import "../Shared/Main/main.css";
-import Button from "../Shared/Button/Button";
 import cls from "classnames";
-import { Link } from "react-router-dom";
-import Title from "antd/lib/skeleton/Title";
+import ArtcileInfo from "./ArticleInfo";
+import { ArticleThumb } from "./ArticleThumb";
+import ArticleCategories from "./ArticleCategories";
+import ArticleStats from "./ArticleStats";
+import ArticleDesc from "./ArticleDesc";
+import ArtilceTitle from "./ArticleTitle";
 
 function Article({
   isStyleRow,
@@ -23,62 +25,31 @@ function Article({
     "style-row": isStyleRow === true,
   });
 
+  const createdDate = article.createdDate;
+  const author = article.author;
+  const title = article.title;
+  const categoriesId = article.categoriesId;
+  const thumbnail = article.thumbnail;
+  const slug = article.slug;
+  const slugLink = "/post-detail/" + slug;
+  const views = article.views;
+  const desc = article.desc;
   return (
     <article {...restProps} className={classes}>
-      <div className="article-item__thumbnail">
-        <Link to="post-detail/abcd">
-          <img src={article.thumbnail} alt="assets/images/blog-1.jpg" />
-        </Link>
-      </div>
+      <ArticleThumb thumbnail={thumbnail} slugLink={slugLink} />
       <div className="article-item__content">
         {isCategoryIncluded && (
-          <ul className="article-item__categories">
-            {article.categories.map((a) => (
-              <li key={Math.random(0, 1)}>
-                <Button type="category" children={a} />
-              </li> /// key should be a.id
-            ))}
-          </ul>
+          <ArticleCategories categoriesId={categoriesId} />
         )}
-        {isStatsIncluded && (
-          <ul className="article-item__stats">
-            <li>
-              <i className="icons ion-ios-eye"></i>
-              <span className="text">{article.views + " views"}</span>
-            </li>
-          </ul>
-        )}
-        <h2 className="article-item__title">
-          <Link to="/post-detail/asdasd">{article.title}</Link>
-        </h2>
-        {isDescriptionIncluded && (
-          <p className="article-item__desc">{article.description}</p>
-        )}
-        <div className="article-item__info">
-          {isAuthorAvatarIncluded && (
-            <div className="article-item__author-image">
-              <a aria-label="John Doe" href="/">
-                <img src={article.author.img} alt="john-doe" />
-              </a>
-            </div>
-          )}
-          <div className="article-item__info-right">
-            {isAuthorNameIncluded && (
-              <div className="article-item__author-name">
-                <a href="/">
-                  <strong>{article.author.name}</strong>
-                </a>
-              </div>
-            )}
-            <div className="article-item__datetime">
-              <div className="date">{article.datetime.date}</div>
-              <div className="time">
-                <ClockLogo />
-                {article.datetime.time}
-              </div>
-            </div>
-          </div>
-        </div>
+        {isStatsIncluded && <ArticleStats views={views} />}
+        <ArtilceTitle title={title} slugLink={slugLink} />
+        {isDescriptionIncluded && <ArticleDesc desc={desc} />}
+        <ArtcileInfo
+          isAuthorAvatarIncluded={isAuthorAvatarIncluded}
+          isAuthorNameIncluded={isAuthorNameIncluded}
+          author={author}
+          createdDate={createdDate}
+        />
       </div>
     </article>
   );
