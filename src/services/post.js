@@ -14,6 +14,19 @@ const PostService = {
       per_page: 3,
     });
   },
+  getArticlePopular() {
+    return PostService.getList({
+      page: 1,
+      per_page: 3,
+      orderby: "post_views",
+    });
+  },
+  getArticleRegular(page = 1) {
+    return PostService.getList({
+      page: page,
+      per_page: 2,
+    });
+  },
 };
 
 export default PostService;

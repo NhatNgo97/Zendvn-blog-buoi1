@@ -1,13 +1,21 @@
 import { ReactComponent as ClockLogo } from "../../assets/img/clock-logo.svg";
-import { DEFAULT_AVATAR } from "../../contansts";
+import { DATE_TEMPLATE, DEFAULT_AVATAR } from "../../contansts";
+import relativeTime from "dayjs/plugin/relativeTime";
+import localeVi from "dayjs/locale/vi";
+import dayjs from "dayjs";
+
+dayjs.locale(localeVi);
+dayjs.extend(relativeTime);
 
 export default function ArtcileInfo({
   isAuthorAvatarIncluded,
   isAuthorNameIncluded,
   author,
-  dateFormatted,
-  dateRelative,
+  createdDate,
 }) {
+  const createdDateObj = dayjs(createdDate);
+  const dateFormatted = createdDateObj.format(DATE_TEMPLATE);
+  const dateRelative = createdDateObj.fromNow();
   return (
     <div className="article-item__info">
       {isAuthorAvatarIncluded && (

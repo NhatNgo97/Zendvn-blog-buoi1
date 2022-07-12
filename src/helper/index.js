@@ -10,8 +10,17 @@ export function mappingPostData(post) {
     thumbnail: post.featured_media_url,
     createdDate: post.date,
     slug: post.slug,
-    categories: post.categories,
-    views: post.view_vount,
+    categoriesId: post.categories,
+    views: post.view_count,
     desc: post.excerpt.rendered,
   };
+}
+
+export function handleHashCategoryById(categories) {
+  const hashObj = {};
+  categories.forEach((categoryItem) => {
+    const key = categoryItem.id;
+    hashObj[key] = categoryItem;
+  });
+  return hashObj;
 }

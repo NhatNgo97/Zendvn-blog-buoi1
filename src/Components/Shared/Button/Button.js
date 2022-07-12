@@ -2,6 +2,7 @@ import { ReactComponent as RotatingIcon } from "../../../assets/img/rotatingIcon
 import "./button.css";
 import cls from "classnames";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function Button({
   type = "default",
@@ -38,7 +39,7 @@ function Button({
   if (as === "a") {
     return (
       <div className="text-center">
-        <a {...injectedProps}>{content}</a>
+        <Link {...injectedProps}>{content}</Link>
       </div>
     );
   }

@@ -3,8 +3,6 @@ import "./ArticleLatestList.css";
 import "../Shared/Bootstrap/bootstrap-tcl.css";
 import "../Shared/Main/main.css";
 import MainTitle from "../Shared/MainTitle/MainTitle";
-import Thumbnail from "../../assets/img/blog-1.jpg";
-import Avatar from "../../assets/img/john-doe.png";
 import { useSelector } from "react-redux";
 
 function ArticleLatestList() {

@@ -3,12 +3,13 @@ import "../Shared/Bootstrap/bootstrap-tcl.css";
 import Article from "../Article";
 import "../Shared/Main/main.css";
 import MainTitle from "../Shared/MainTitle/MainTitle";
-import Thumbnail from "../../assets/img/blog-1.jpg";
-import Avatar from "../../assets/img/john-doe.png";
 import { useSelector } from "react-redux";
 
 function ArticlePopularList() {
-  const postList = useSelector((state) => state.Post).slice(0, 3);
+  const postList = useSelector((state) => state.Post.artcilePopular).slice(
+    0,
+    3
+  );
 
   if (postList.length === 0) return <div></div>;
   return (
@@ -19,7 +20,7 @@ function ArticlePopularList() {
           <div className="popular-news__list--left">
             <div className="popular-news__list--row">
               {postList.slice(0, 2).map((a) => (
-                <div className="popular-news__list--card">
+                <div key={a.id} className="popular-news__list--card">
                   <Article
                     isStatsIncluded={true}
                     isAuthorAvatarIncluded={true}
