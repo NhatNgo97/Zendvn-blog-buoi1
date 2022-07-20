@@ -12,7 +12,7 @@ function CommentForm() {
         <textarea name=""></textarea>
       </div>
       <div className="text-right">
-        <button class="btn btn-default">Submit</button>
+        <button className="btn btn-default">Submit</button>
       </div>
     </div>
   );

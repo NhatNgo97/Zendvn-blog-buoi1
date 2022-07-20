@@ -2,7 +2,7 @@ import { ACCESS_TOKEN } from "../../contansts";
 import { LOGIN_SUCCESS_ACTION, LOGOUT_ACTION } from "./actions";
 
 const initState = {
-  token: "",
+  token: localStorage.getItem(ACCESS_TOKEN),
   currentUser: null,
 };
 

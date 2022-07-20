@@ -14,6 +14,14 @@ const userService = {
       },
     });
   },
+  register({ nickname, username, email, password }) {
+    return api.post("/wp/v2/users/register", {
+      email,
+      username,
+      nickname,
+      password,
+    });
+  },
 };
 
 export default userService;

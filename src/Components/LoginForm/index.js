@@ -67,15 +67,17 @@ function LoginForm() {
 
   function handleSubmit(event) {
     setFormError("");
-
+    if (isLoading) {
+      return;
+    }
     event.preventDefault();
     const isValid = checkFormIsValid();
     if (!isValid) {
       console.log("Form Error");
       return;
     }
-
     setIsLoading(true);
+
     dispatch(
       loginAsyncAction({
         username: formState.username.value,

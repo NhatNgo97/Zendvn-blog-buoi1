@@ -1,10 +1,11 @@
-import { ACCESS_TOKEN } from "../../contansts";
+import { ACCESS_TOKEN, MESSAGE_FORM_ERROR } from "../../contansts";
 import { mappingCurrentUser } from "../../helper";
 import userService from "../../services/user";
 
 //ACTION TYPES
 export const LOGIN_SUCCESS_ACTION = "LOGIN_SUCCESS_ACTION";
 export const LOGOUT_ACTION = "LOGOUT_ACTION";
+export const REGISTER_ACTION = "REGISTER_ACTION";
 
 //ACTION
 
@@ -39,7 +40,7 @@ export function fetchMeAsyncAction(token) {
         ok: true,
       };
     } catch (err) {
-      localStorage.removeItem(ACCESS_TOKEN);
+      dispatch(logoutAction());
       return {
         ok: false,
         error: "Username or Password is incorrect.",
@@ -63,6 +64,35 @@ export function loginAsyncAction({ username, password }) {
         ok: false,
         error: "Username or Password is incorrect.",
       };
+    }
+  };
+}
+
+export function registerAsyncAction({ nickname, username, email, password }) {
+  return async function (dispatch) {
+    try {
+      const response = await userService.register({
+        email,
+        username,
+        password,
+        nickname,
+      });
+      const responseLogin = await dispatch(
+        loginAsyncAction({
+          username: username,
+          password: password,
+        })
+      );
+      if (responseLogin.ok) {
+        return { ok: true };
+      }
+      throw new Error(MESSAGE_FORM_ERROR.default);
+    } catch (err) {
+      let errorMessage = MESSAGE_FORM_ERROR.default;
+
+      const errorCode = err.response?.data?.code;
+      errorMessage = errorCode && MESSAGE_FORM_ERROR[errorCode];
+      return { ok: false, error: errorMessage };
     }
   };
 }
