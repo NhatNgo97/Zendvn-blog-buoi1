@@ -16,6 +16,15 @@ export function mappingPostData(post) {
   };
 }
 
+export function mappingCurrentUser(user) {
+  return {
+    id: user.id,
+    email: user.email,
+    nickname: user.nickname,
+    avatar: user.avatar_urls["96"],
+  };
+}
+
 export function handleHashCategoryById(categories) {
   const hashObj = {};
   categories.forEach((categoryItem) => {
@@ -23,4 +32,17 @@ export function handleHashCategoryById(categories) {
     hashObj[key] = categoryItem;
   });
   return hashObj;
+}
+
+export function validateFormData({ value, name }) {
+  let error = "";
+
+  if (name === "username" && !value) {
+    error = "Username cant be empty";
+  }
+  if (name === "password") {
+    if (!value) error = "Password cant be empty";
+    else if (value.length < 6) error = "Password is too short";
+  }
+  return error;
 }

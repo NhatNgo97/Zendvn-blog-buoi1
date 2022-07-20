@@ -1,7 +1,23 @@
 import Input from "../Shared/Input";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 function RegisterForm() {
+  const [formState, setFormState] = useState({
+    nickname: {
+      value: "",
+      error: "",
+    },
+    username: {
+      value: "",
+      error: "",
+    },
+    password: {
+      value: "",
+      error: "",
+    },
+    cPassword: { value: "", error: "" },
+  });
   return (
     <main className="login">
       <div className="spacing"></div>

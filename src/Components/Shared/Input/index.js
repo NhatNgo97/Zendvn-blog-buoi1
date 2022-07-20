@@ -4,7 +4,7 @@ import "./input.css";
 import cls from "classnames";
 import SearchLogo from "../../../assets/img/search-logo.svg";
 
-function Input({ className, type = "text", icon, label, ...restProps }) {
+function Input({ className, type = "text", icon, label, error, ...restProps }) {
   const [localType, setLocalType] = useState(type);
 
   function handlePasswordHidden() {
@@ -26,24 +26,30 @@ function Input({ className, type = "text", icon, label, ...restProps }) {
   }
 
   return (
-    <div className="form-control">
+    <div
+      className={cls("form-control", {
+        "form-control__has-error": error,
+      })}
+    >
       {label && <label>{label}</label>}
-      {icon && <img src={icon} alt="icon" />}
-      {type === "password" && localType === "password" && (
-        <EyeOutlined
-          className="toggle-password"
-          style={{ padding: "0.8rem 1vw" }}
-          onClick={handlePasswordHidden}
-        />
-      )}
-      {type === "password" && localType === "text" && (
-        <EyeInvisibleOutlined
-          className="toggle-password"
-          style={{ padding: "0.8rem 1vw" }}
-          onClick={handlePasswordHidden}
-        />
-      )}
-      <input className={classes} {...restProps} type={localType} />
+      <div className="form-control__input">
+        {icon && <img src={icon} alt="icon" />}
+        {type === "password" && localType === "password" && (
+          <EyeOutlined
+            className="toggle-password"
+            onClick={handlePasswordHidden}
+          />
+        )}
+        {type === "password" && localType === "text" && (
+          <EyeInvisibleOutlined
+            className="toggle-password"
+            onClick={handlePasswordHidden}
+          />
+        )}
+        <input className={classes} {...restProps} type={localType} />
+      </div>
+
+      {error && <span className="form-control__error">{error}</span>}
     </div>
   );
 }
