@@ -4,10 +4,31 @@ export function getQuerryString(name) {
   return new URLSearchParams(window.location.search).get(name);
 }
 
+export function highlightKeyword(string, keyword) {
+  const regex = new RegExp(keyword, "ig");
+  const found = string.match(regex)[0];
+  console.log(string.replaceAll(regex, `<mark>${found}</mark>`));
+  return string.replace(regex, `<mark>${found}</mark>`);
+}
+
 export function mappingPostData(post) {
   return {
     id: post.id,
     title: post.title.rendered,
+    author: post.author_data,
+    thumbnail: post.featured_media_url,
+    createdDate: post.date,
+    slug: post.slug,
+    categoriesId: post.categories,
+    views: post.view_count,
+    desc: post.excerpt.rendered,
+  };
+}
+
+export function mappingSearchPostData(post, keyword) {
+  return {
+    id: post.id,
+    title: highlightKeyword(post.title.rendered, keyword),
     author: post.author_data,
     thumbnail: post.featured_media_url,
     createdDate: post.date,
@@ -25,6 +46,10 @@ export function mappingCurrentUser(user) {
     nickname: user.nickname,
     avatar: user.avatar_urls["96"],
   };
+}
+
+export function filterSearchTitle(post, keyword) {
+  return post.title.rendered.toLowerCase().includes(keyword.toLowerCase());
 }
 
 export function handleHashCategoryById(categories) {
