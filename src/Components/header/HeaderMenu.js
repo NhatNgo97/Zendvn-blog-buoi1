@@ -1,6 +1,18 @@
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { logoutAction } from "../../store/user/actions";
 
 function HeaderMenu() {
+  const dispatch = useDispatch();
+  const user = useSelector((state) => {
+    return state.User.currentUser;
+  });
+
+  function handleLogOut(event) {
+    event.preventDefault();
+    dispatch(logoutAction());
+  }
+
   return (
     <div className="tcl-col-6">
       <div className="header-nav">
@@ -49,11 +61,27 @@ function HeaderMenu() {
           </li>
         </ul>
         <ul className="header-nav__lists">
-          <li className="user">
-            <Link to="/login">
-              <i className="icons ion-person"></i> Tài khoản
-            </Link>
-          </li>
+          {user ? (
+            <li className="user">
+              <Link to="/dashboard">
+                <i className="icons ion-person"></i>
+                {user.nickname}
+              </Link>
+              <ul>
+                <li>
+                  <a onClick={handleLogOut} href="/">
+                    Log Out
+                  </a>
+                </li>
+              </ul>
+            </li>
+          ) : (
+            <li className="user">
+              <Link to="/login">
+                <i className="icons ion-person"></i> Tài khoản
+              </Link>
+            </li>
+          )}
         </ul>
       </div>
     </div>

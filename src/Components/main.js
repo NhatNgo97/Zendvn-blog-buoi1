@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import CategoryPage from "../Pages/CategoryPage";
 import {
   HomePage,
   LoginPage,
@@ -15,6 +16,7 @@ function Main() {
       <Route path="/search" element={<SearchPage />} />
       <Route path="/post-detail/:slug" element={<DetailPage />} />
       <Route path="/register" element={<RegisterPage />} />
+      <Route path="/category/:slug" element={<CategoryPage />} />
     </Routes>
   );
 }

@@ -13,6 +13,7 @@ function Button({
   as = "button",
   loadingPos = "left",
   className,
+  onClick,
   ...restProps
 }) {
   const classes = cls("btn", className, {
@@ -21,6 +22,12 @@ function Button({
     "btn-primary": type === "primary",
     "btn-size-large": size === "large",
   });
+
+  function _onClick(event) {
+    if (!isLoading) {
+      onClick && onClick(event);
+    }
+  }
 
   const content = (
     <>
@@ -33,6 +40,7 @@ function Button({
   const injectedProps = {
     className: classes,
     type: htmlType,
+    onClick: _onClick,
     ...restProps,
   };
 

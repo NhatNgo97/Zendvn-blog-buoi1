@@ -27,6 +27,15 @@ const PostService = {
       per_page: 2,
     });
   },
+  getArticleSearch(keyword, page, categoryId) {
+    return PostService.getList({
+      page: page,
+      per_page: 2,
+      search: keyword,
+      lang: "vi",
+      categories: categoryId,
+    });
+  },
 };
 
 export default PostService;

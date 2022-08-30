@@ -6,17 +6,19 @@ import { useNavigate, useLocation } from "react-router-dom";
 function HeaderSearch() {
   const navigate = useNavigate();
 
-  const [queryString, setQueryString] = useState("");
+  const [localQueryString, setLocalQueryString] = useState("");
 
   function handleOnChange(e) {
-    setQueryString(e.target.value);
+    setLocalQueryString(e.target.value);
   }
   function handleSubmit(event) {
     event.preventDefault();
-    if (!queryString) {
+    if (!localQueryString) {
       return;
     }
-    const queryStringURI = encodeURIComponent(queryString);
+    console.log("submit");
+
+    const queryStringURI = encodeURIComponent(localQueryString);
     navigate("./search?q=" + queryStringURI);
   }
 
@@ -25,7 +27,7 @@ function HeaderSearch() {
       <form onSubmit={handleSubmit} method="get">
         <Input
           onChange={handleOnChange}
-          value={queryString}
+          value={localQueryString}
           type="search"
           placeholder="Search"
           icon={SearchLogo}

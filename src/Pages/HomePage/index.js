@@ -18,7 +18,9 @@ function HomePage() {
   useEffect(() => {
     dispatch(getArticleLatestListAsyncAction());
     dispatch(getArticlePopularListAsyncAction());
-    dispatch(getArticleRegularListAsyncAction({ page }));
+    if (page === 0) {
+      dispatch(getArticleRegularListAsyncAction({ page }));
+    }
   }, []);
 
   return (
